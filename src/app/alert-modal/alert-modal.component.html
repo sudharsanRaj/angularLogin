@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Confirm</h1>
+<mat-dialog-content>
+    are you sure want to delete it?
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="btn btn-primary" [mat-dialog-close]="data.yes">yes</button>
+    <button (click)="closeMe()">cancel</button>
+</mat-dialog-actions>

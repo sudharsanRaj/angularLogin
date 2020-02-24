@@ -1,0 +1,89 @@
+<div class="contain">
+    <nav class="navbar navbar-expand-sm bg-dark">
+
+        <!-- Links -->
+
+        <ul class="navbar-nav mr-auto">
+
+            <h1>Edit Employee</h1>
+        </ul>
+
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <button (click)="logout()">logout</button>
+            </li>
+        </ul>
+
+
+
+    </nav>
+    <div class="container">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="empID">EmpID</label>
+                <input type="text" formControlName="empID" disabled class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empID.errors }" />
+                <div *ngIf="submitted && f.empID.errors" class="invalid-feedback">
+                    <div *ngIf="f.empID.errors.required">empID is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="doj">Doj</label>
+                <input type="date" formControlName="doj" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.doj.errors }" />
+                <div *ngIf="submitted && f.doj.errors" class="invalid-feedback">
+                    <div *ngIf="f.doj.errors.required">doj is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <button [disabled]="loading" class="btn btn-primary">update</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                />
+                <button (click)="cancel() ; registerForm.reset({})" class="btn btn-link">Cancel</button>
+            </div>
+
+        </form>
+        <label>schedlue:</label>
+        <div *ngIf="!activeTable">
+            <p>There is no Schedule Data for this Employee</p>
+        </div>
+        <table class="table" *ngIf="activeTable">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr mdbTableCol *ngFor="let el of editEmployee; let i = index" [attr.data-index]="i">
+                    <th scope="row">{{ el.id }}</th>
+                    <td>{{ el.date }}</td>
+                    <td>{{ el.description }}</td>
+                    <td (click)="editSchedule(el, i)">
+                        <a class="text-primary">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </td>
+                    <td (click)="delete(i, 'name')">
+                        <a class="text-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
