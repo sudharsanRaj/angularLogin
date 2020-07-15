@@ -10,11 +10,7 @@
         </li>
     </ul>
 
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <button (click)="logout()">logout</button>
-        </li>
-    </ul>
+
 </nav>
 <div class="calendar-container">
     <p-calendar [(ngModel)]="dateValue" [inline]="true" (onSelect)="datePick()" dateFormat="dd.mm.yy"> </p-calendar>

@@ -32,7 +32,8 @@ export class CalenderdashboardComponent implements OnInit {
   datePick() {
     let myMoment = moment(this.dateValue).format("DD/MM/YYYY");
     const dialogCalender = this.dialog.open(CalendarModalComponent, {
-      width: "250px"
+      width: "350px",
+   
     });
 
     dialogCalender.afterClosed().subscribe(result => {

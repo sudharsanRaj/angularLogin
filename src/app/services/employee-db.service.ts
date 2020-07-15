@@ -14,16 +14,14 @@ export class EmployeeDBService {
   
   getAll() {
     let getData;
+    if(localStorage.getItem("detailsEmployee"))
     getData = JSON.parse(localStorage.getItem("detailsEmployee"));
     return getData;
   }
 
   register(user: Employee) {
     this.employeeDetails.push(user);
-    localStorage.setItem(
-      "detailsEmployee",
-      JSON.stringify(this.employeeDetails)
-    );
+    localStorage.setItem("detailsEmployee",JSON.stringify(this.employeeDetails));
   }
 
   update(data, index) {

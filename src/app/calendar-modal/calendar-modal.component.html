@@ -1,15 +1,20 @@
 <h1 mat-dialog-title>Add Event</h1>
 <mat-dialog-content>
     <label>Emp Name:</label>
-    <select [(ngModel)]="calenderEvent.empID" [disabled]="editName"><option  *ngFor="let emp of employeeName"  [value]="emp.empID"  >{{emp.firstName}}</option> </select>
+    <select [(ngModel)]="calenderEvent.empID"  [disabled]="editName">
+        <option disabled selected value="undefined">Select</option>
+        <option  *ngFor="let emp of employeeName"  [value]="emp.empID"  >{{emp.firstName}}</option> </select>
     <div>
         <label>Description:</label>
         <!-- <input [(ngModel)]="calenderEvent.description" type="text" /> -->
-        <textarea matInput [(ngModel)]="calenderEvent.description" type="text"> </textarea>
+        <textarea matInput [disabled]="employeeName.length == 0 || calenderEvent.empID == undefined " [(ngModel)]="calenderEvent.description" type="text"> </textarea>
     </div>
 
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button class="btn btn-primary" [mat-dialog-close]="calenderEvent">yes</button>
-    <button (click)="closeMe()">cancel</button>
+    <div>
+        <button [disabled]=" !calenderEvent.description ||  calenderEvent.empID == ''" class="btn btn-primary" [mat-dialog-close]="calenderEvent">yes</button>
+        <button (click)="closeMe()">cancel</button>
+    </div>
+   
 </mat-dialog-actions>

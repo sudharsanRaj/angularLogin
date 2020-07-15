@@ -3,10 +3,10 @@
 
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" routerLink="/dashboard">employee </a>
+            <a class="nav-link" routerLink="/dashboard">Employee </a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" routerLink="/calendarView">schedule </a>
+            <a class="nav-link" routerLink="/calendarView">Schedule </a>
         </li>
     </ul>
 
@@ -17,16 +17,19 @@
     </ul>
 </nav>
 
-<div>
-    <div>
-        <div>
+<div class="dashboard ">
+    <div class="float-right" >
+        <button routerLink="/addemployee" routerLinkActive="active" class="btn btn-primary">
+    add
+  </button>
+    </div>
+    <div >
+       
+       
             <h4>Employee Details</h4>
-        </div>
-        <div class="float-right">
-            <button routerLink="/addemployee" routerLinkActive="active" class="btn btn-primary">
-        add
-      </button>
-        </div>
+       
+       
+       
     </div>
     <table class="table" *ngIf="activeTable">
         <thead>
@@ -35,8 +38,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr mdbTableCol *ngFor="let el of empDetails; let i = index" [attr.data-index]="i">
-                <th scope="row">{{ el.empID }}</th>
+            <tr mdbTableCol (click)="update(el, i)" *ngFor="let el of empDetails; let i = index" [attr.data-index]="i">
+                <th scope="row" >{{ el.empID }}</th>
                 <td>{{ el.firstName }}</td>
                 <td>{{ el.lastName }}</td>
                 <td>{{ el.doj }}</td>

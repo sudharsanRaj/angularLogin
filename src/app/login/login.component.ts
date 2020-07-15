@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     userLogin = localStorage.getItem("user");
     console.log(userLogin.length);
     if (userLogin) {
+      localStorage.setItem("detailsEmployee","");
       this.router.navigate(["/dashboard"]);
     }
     else{
