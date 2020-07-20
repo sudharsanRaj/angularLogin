@@ -32,3 +32,42 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+mat-dialog-container#modal-component {
+    border: 3px solid #262626;
+    border-radius: 11px;
+    background-color: white;
+    color: black;
+    #modal-action-button{
+        margin: 10px;
+       
+        width: 30%;
+        
+    }
+    #modal-cancel-button{
+        width: 30%;
+    }
+    label{
+        margin: 20px;
+    }
+ 
+}
+
+.dashboard{
+    h1 {
+        color: white;
+    }
+    
+     td,th{
+        text-align: center;
+    }
+
+ 
+    
+}
+a{
+    &.nav-link{
+        color: white;
+        text-transform: uppercase;
+    }
+}

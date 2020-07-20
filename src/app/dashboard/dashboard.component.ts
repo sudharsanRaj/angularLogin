@@ -50,8 +50,9 @@ export class DashboardComponent implements OnInit {
  
   delete(i, name: string) {
     const dialogRef = this.dialog.open(AlertModalComponent, {
+      id : "modal-component",
       width: "250px",
-      data: { yes: "yes" }
+      data: { yes: "yes" },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -66,6 +67,7 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
+  
   }
   logout() {
     localStorage.setItem("user", "");

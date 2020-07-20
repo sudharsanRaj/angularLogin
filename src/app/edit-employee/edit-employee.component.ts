@@ -86,9 +86,10 @@ export class EditEmployeeComponent implements OnInit {
     let scheduleIndexid;
     scheduleIndexid = edit.id;
     const dialogCalender = this.dialog.open(CalendarModalComponent, {
-      width: "250px",
+      id : "modal-component",
+      width: "450px",
       data: { calenderEvent: edit, empID: this.empDetails[this.indexId].empID },
-      position: { top: "0" }
+      
     });
 
     dialogCalender.afterClosed().subscribe(result => {
@@ -102,6 +103,7 @@ export class EditEmployeeComponent implements OnInit {
   }
   delete(i, name: string) {
     const dialogRef = this.dialog.open(AlertModalComponent, {
+      id : "modal-component",
       width: "250px",
       data: { yes: "yes" }
     });

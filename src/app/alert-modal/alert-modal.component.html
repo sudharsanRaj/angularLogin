@@ -1,8 +1,26 @@
-<h1 mat-dialog-title>Confirm</h1>
+<!-- <h1 mat-dialog-title>Confirm</h1>
 <mat-dialog-content>
     are you sure want to delete it?
 </mat-dialog-content>
-<mat-dialog-actions>
-    <button class="btn btn-primary" [mat-dialog-close]="data.yes">yes</button>
+<mat-dialog-actions >
+    <button class="btn btn-primary bottom" [mat-dialog-close]="data.yes">yes</button>
     <button (click)="closeMe()">cancel</button>
-</mat-dialog-actions>
+</mat-dialog-actions> -->
+
+
+<div id="modal-content-wrapper">
+    <header id="modal-header">
+        <h1 id="modal-title"> Confirm </h1>
+    </header>
+    <section id="modal-body">
+        <p> are you sure want to delete it?</p>
+    </section>
+    <footer id="modal-footer">
+        <button mat-raised-button id="modal-action-button"  class="btn btn-primary"  [mat-dialog-close]="data.yes">
+            yes
+        </button>
+        <button mat-raised-button id="modal-cancel-button" (click)="closeMe()">
+          cancel
+        </button>
+    </footer>
+</div>

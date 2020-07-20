@@ -7,7 +7,7 @@ import { Employee } from "../modal/employee";
 export class EmployeeDBService {
   setEmployee: any;
   editEmployeeId: any;
-  employeeDetails = [];
+  employeeDetails :any;
 
   constructor() {}
 
@@ -20,8 +20,10 @@ export class EmployeeDBService {
   }
 
   register(user: Employee) {
+    this.employeeDetails =  JSON.parse(localStorage.getItem("detailsEmployee"));
     this.employeeDetails.push(user);
     localStorage.setItem("detailsEmployee",JSON.stringify(this.employeeDetails));
+    console.log(localStorage.getItem("detailsEmployee"));
   }
 
   update(data, index) {
@@ -46,9 +48,10 @@ export class EmployeeDBService {
   }
 
   delete(id: number) {
-    let deleteData;
+    let deleteData ;
     deleteData = JSON.parse(localStorage.getItem("detailsEmployee"));
     deleteData.splice(id, 1);
     localStorage.setItem("detailsEmployee", JSON.stringify(deleteData));
+    console.log(localStorage.getItem("detailsEmployee"));
   }
 }

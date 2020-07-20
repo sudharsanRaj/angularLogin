@@ -58,6 +58,7 @@ export class EmployeedetailsComponent implements OnInit {
     } else {
       userId = this.employeeDetails[this.employeeDetails.length - 1].empID + 1;
     }
+    console.log(userId);
     this.registerForm.value.empID = userId;
     this.empService.register(this.registerForm.value);
     this.router.navigate(["/dashboard"]);

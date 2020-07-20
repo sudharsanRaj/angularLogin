@@ -38,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr mdbTableCol (click)="update(el, i)" *ngFor="let el of empDetails; let i = index" [attr.data-index]="i">
+            <tr mdbTableCol  *ngFor="let el of empDetails; let i = index" [attr.data-index]="i">
                 <th scope="row" >{{ el.empID }}</th>
                 <td>{{ el.firstName }}</td>
                 <td>{{ el.lastName }}</td>
@@ -61,3 +61,4 @@
         <p>There is no Data availble in Employee details</p>
     </div>
 </div>
+
